@@ -19,6 +19,9 @@ public:
     Matrix operator * (const Matrix & matrix);
     Matrix getInversion();
     double determinant();
+    double gaussDeterminant();
+    void setCoefficients();
+    bool haveMatrixSameSize(Matrix b);
 
     friend istream & operator >> (istream & s, Matrix & matrix );
     friend ostream & operator << (ostream & s, Matrix & matrix );

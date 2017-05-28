@@ -12,13 +12,25 @@ void determination();
 void inversion();
 void menu();
 
+void setMatrixSize(Matrix & matrix){
+    cout << "Podaj wielkosc macierzy: " << endl;
+    cin >> matrix;
+}
+
+void preperMatrixes(Matrix & a, Matrix & b){
+    cout << "Wprowadz wspolczynniki pierwszej macierzy: " << endl;
+    a.setCoefficients();
+    cout << "Wprowadz wspolczynniki drugiej macierzy: " << endl;
+    b.setCoefficients();
+}
+
+
 void addition(){
     Matrix a, b;
-    cout << "WprowadŸ pierwsza macierz: " << endl;
-    cin >> a;
-    cout << "WprowadŸ druga macierz: " << endl;
-    cin >> b;
-    if(a.m == b.m && a.n == b.n){
+    setMatrixSize(a);
+    setMatrixSize(b);
+    if(a.haveMatrixSameSize(b)){
+        preperMatrixes(a, b);
         a = a + b;
         cout << "Wynik: " << endl << a << endl;
     } else {
@@ -28,11 +40,10 @@ void addition(){
 
 void subtraction(){
     Matrix a, b;
-    cout << "WprowadŸ pierwsza macierz: " << endl;
-    cin >> a;
-    cout << "WprowadŸ druga macierz: " << endl;
-    cin >> b;
-    if(a.m == b.m && a.n == b.n){
+    setMatrixSize(a);
+    setMatrixSize(b);
+    if(a.haveMatrixSameSize(b)){
+        preperMatrixes(a, b);
         a = a - b;
         cout << "Wynik: " << endl << a << endl;
     } else {
@@ -42,11 +53,10 @@ void subtraction(){
 
 void multiplcation(){
     Matrix a, b;
-    cout << "WprowadŸ pierwsza macierz: " << endl;
-    cin >> a;
-    cout << "WprowadŸ druga macierz: " << endl;
-    cin >> b;
-    if(a.m == b.n){
+    setMatrixSize(a);
+    setMatrixSize(b);
+    if(a.n == b.m){
+        preperMatrixes(a, b);
         a = a * b;
         cout << "Wynik: " << endl << a << endl;
     } else {
@@ -56,10 +66,11 @@ void multiplcation(){
 
 void determination(){
     Matrix m;
-    cout << "WprowadŸ macierz: " << endl;
-    cin >> m;
-    if((m.m == 3) && (m.n == 3) || (m.m == 2) && (m.n == 2) || (m.m == 1) && (m.n == 1)) {
-        cout << "Wyznacznik wynosi: " << m.determinant() << endl;
+    setMatrixSize(m);
+    cout << "Wprowadz wspolczynniki macierzy: " << endl;
+    m.setCoefficients();
+    if(m.m == m.n) {
+        cout << "Wyznacznik wynosi: " << m.gaussDeterminant() << endl;
     } else {
         cout << "Nie mozna obliczyc - zly rozmiar" << endl;
     }
@@ -67,8 +78,9 @@ void determination(){
 
 void inversion(){
     Matrix m;
-    cout << "WprowadŸ macierz: " << endl;
-    cin >> m;
+    setMatrixSize(m);
+    cout << "Wprowadz wspolczynniki macierzy: " << endl;
+    m.setCoefficients();
     if(m.m != m.n){
         cout << "Nie mozna obliczyc - macierz nie jest kwadratowa" << endl;
     } else if(m.m > 3) {
@@ -81,12 +93,18 @@ void inversion(){
 
 void equation(){
     Matrix a, b, c;
-    cout << "WprowadŸ macierz A: " << endl;
-    cin >> a;
-    cout << "WprowadŸ macierz B: " << endl;
-    cin >> b;
-    cout << "WprowadŸ macierz C: " << endl;
-    cin >> c;
+    cout << "Wprowadz macierz A: " << endl;
+    setMatrixSize(a);
+    cout << "Wprowadz wspolczynniki macierzy: " << endl;
+    a.setCoefficients();
+    cout << "Wprowadz macierz B: " << endl;
+    setMatrixSize(b);
+    cout << "Wprowadz wspolczynniki macierzy: " << endl;
+    b.setCoefficients();
+    cout << "Wprowadz macierz C: " << endl;
+    setMatrixSize(c);
+    cout << "Wprowadz wspolczynniki macierzy: " << endl;
+    c.setCoefficients();
     Matrix x(a.m, a.n);
     if((c.m + b.m == c.n + b.n) && (a.m == a.n) && (a.m == c.m) && (a.m < 4)) {
         x = c - b;
