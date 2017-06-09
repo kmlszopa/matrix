@@ -87,7 +87,7 @@ Matrix Matrix::operator + (const Matrix & matrix) {
 
 Matrix Matrix::operator * (const Matrix & matrix){
     if(n == matrix.m){
-        Matrix o(m, n);
+        Matrix o(m, m);
         for(int i = 0; i < m; i++) {
             for(int j = 0; j < matrix.n; j++) {
                 for(int k = 0; k < n; k++) {

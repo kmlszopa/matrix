@@ -1,14 +1,14 @@
 # depslib dependency file v1.0
-1495999152 source:q:\workspace\matrixproject\main.cpp
+1497033162 source:q:\workspace\matrixproject\main.cpp
 	<iostream>
 	<math.h>
 	<Matrix.h>
 	<stdlib.h>
 
-1495999051 q:\workspace\matrixproject\include\matrix.h
+1497033386 q:\workspace\matrixproject\include\matrix.h
 	"iostream"
 
-1495999112 source:q:\workspace\matrixproject\src\matrix.cpp
+1497032936 source:q:\workspace\matrixproject\src\matrix.cpp
 	"Matrix.h"
 	"iostream"
 

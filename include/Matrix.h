@@ -18,7 +18,6 @@ public:
     Matrix operator + (const Matrix & matrix);
     Matrix operator * (const Matrix & matrix);
     Matrix getInversion();
-    double determinant();
     double gaussDeterminant();
     void setCoefficients();
     bool haveMatrixSameSize(Matrix b);
